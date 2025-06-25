@@ -8,17 +8,27 @@ A TypeScript-based project featuring an MCP (Model Context Protocol) server, Clo
 - **Cloudflare Workers**: API endpoints deployed on Cloudflare edge network
 - **Data Batch**: Scheduled data fetching and storage
 - **Test-Driven Development**: 100% test coverage with Vitest
+- **Code Quality**: ESLint, Prettier, and automated formatting
+- **Security**: Secret detection with detect-secrets
+- **Pre-commit Hooks**: Automated code quality checks before commits
 
 ## Prerequisites
 
 - Node.js 18.x or 20.x
 - npm or yarn
+- Python 3.x (for detect-secrets)
 - Cloudflare account (for Workers deployment)
 
 ## Installation
 
 ```bash
+# Install Node.js dependencies
 npm install
+
+# Install detect-secrets for secret scanning
+pip install detect-secrets
+# or
+pipx install detect-secrets
 ```
 
 ## Development
@@ -36,10 +46,33 @@ npm run test:watch
 npm run test:coverage
 ```
 
-### Type Checking
+### Code Quality
 
 ```bash
+# Lint code
+npm run lint
+
+# Auto-fix lint issues
+npm run lint:fix
+
+# Format code
+npm run format
+
+# Check formatting
+npm run format:check
+
+# Type checking
 npm run typecheck
+```
+
+### Security
+
+```bash
+# Scan for secrets
+npm run secrets:scan
+
+# Audit detected secrets
+npm run secrets:audit
 ```
 
 ### MCP Server
@@ -104,12 +137,28 @@ CLOUDFLARE_API_TOKEN=your_api_token
 CLOUDFLARE_ACCOUNT_ID=your_account_id
 ```
 
+## Pre-commit Hooks
+
+This project uses pre-commit hooks to ensure code quality:
+
+- **Secret Detection**: Scans for hardcoded secrets using detect-secrets
+- **Code Formatting**: Automatic formatting with Prettier
+- **Linting**: ESLint checks with auto-fixing
+- **Staged Files Only**: Runs only on staged files for performance
+
+The hooks are automatically installed when you run `npm install` and will run before each commit.
+
 ## Deployment
 
 The project uses GitHub Actions for CI/CD:
 
-- **CI Pipeline**: Runs on every push and PR
-- **Deploy Pipeline**: Deploys to Cloudflare Workers on main branch
+- **CI Pipeline**: Runs on every push and PR with comprehensive checks:
+  - Secret detection
+  - Code formatting verification
+  - Linting
+  - Type checking
+  - Tests with coverage
+- **Deploy Pipeline**: Deploys to Cloudflare Workers on main branch with security checks
 
 ## License
 
