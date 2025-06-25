@@ -1,0 +1,9 @@
+name = "zen-syllabus"
+main = "src/workers/index.ts"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "zen-syllabus-prod"
+
+[env.staging]
+name = "zen-syllabus-staging"
