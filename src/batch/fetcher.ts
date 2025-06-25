@@ -24,11 +24,14 @@ export class DataFetcher {
 
   async save(data: FetchedData): Promise<string> {
     await this.ensureDataDirectory();
-    
+
     const date = new Date(data.timestamp);
-    const filename = `data-${date.toISOString().replace(/:/g, '-').replace(/\.\d{3}Z$/, '')}.json`;
+    const filename = `data-${date
+      .toISOString()
+      .replace(/:/g, '-')
+      .replace(/\.\d{3}Z$/, '')}.json`;
     const filepath = path.join(this.dataDir, filename);
-    
+
     await fs.writeFile(filepath, JSON.stringify(data, null, 2));
     return filename;
   }

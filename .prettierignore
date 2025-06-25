@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+.wrangler/
+data/
+package-lock.json
+*.min.js
+*.bundle.js

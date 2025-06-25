@@ -23,15 +23,15 @@ export class MCPServer {
     return [
       {
         name: 'getSyllabus',
-        description: 'Get syllabus information'
-      }
+        description: 'Get syllabus information',
+      },
     ];
   }
 
-  async executeTool(toolName: string, params: Record<string, any>): Promise<ToolResult> {
+  async executeTool(toolName: string, _params: Record<string, unknown>): Promise<ToolResult> {
     if (toolName === 'getSyllabus') {
       return {
-        content: 'Syllabus content'
+        content: 'Syllabus content',
       };
     }
     throw new Error('Tool not found');

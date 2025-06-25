@@ -3,13 +3,10 @@ export async function handleRequest(request: Request): Promise<Response> {
   const path = url.pathname;
 
   if (request.method !== 'GET') {
-    return new Response(
-      JSON.stringify({ error: 'Method not allowed' }),
-      {
-        status: 405,
-        headers: { 'content-type': 'application/json' },
-      }
-    );
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'content-type': 'application/json' },
+    });
   }
 
   switch (path) {
@@ -38,12 +35,9 @@ export async function handleRequest(request: Request): Promise<Response> {
       );
 
     default:
-      return new Response(
-        JSON.stringify({ error: 'Not found' }),
-        {
-          status: 404,
-          headers: { 'content-type': 'application/json' },
-        }
-      );
+      return new Response(JSON.stringify({ error: 'Not found' }), {
+        status: 404,
+        headers: { 'content-type': 'application/json' },
+      });
   }
 }

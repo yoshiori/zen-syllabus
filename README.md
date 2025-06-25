@@ -88,9 +88,11 @@ tests/
 ## API Endpoints
 
 ### GET /
+
 Returns API information
 
 ### GET /syllabus
+
 Returns syllabus content
 
 ## Environment Variables

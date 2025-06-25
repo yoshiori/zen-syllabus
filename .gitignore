@@ -3,10 +3,13 @@ node_modules/
 
 # Build output
 dist/
-*.js
-*.js.map
 *.d.ts
 *.d.ts.map
+
+# Compiled JavaScript (but keep config files)
+*.js
+!*.config.js
+!*.config.mjs
 
 # Test coverage
 coverage/

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { DataFetcher } from './fetcher';
 
-async function main() {
+async function main(): Promise<void> {
   console.log('Starting data fetch batch...');
-  
+
   const fetcher = new DataFetcher();
   const result = await fetcher.run();
-  
+
   if (result.success) {
     console.log(`Data saved successfully: ${result.filename}`);
   } else {
@@ -15,7 +15,7 @@ async function main() {
   }
 }
 
-main().catch((error) => {
+main().catch(error => {
   console.error('Batch error:', error);
   process.exit(1);
 });

@@ -2,13 +2,13 @@ import { MCPServer } from './server';
 
 export class MCPServerAdapter {
   private mcpServer: MCPServer;
-  private server: any;
+  private server: unknown;
 
   constructor() {
     this.mcpServer = new MCPServer();
   }
 
-  createServer(): any {
+  createServer(): unknown {
     return this.server;
   }
 
