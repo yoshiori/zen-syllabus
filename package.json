@@ -19,7 +19,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "secrets:scan": "detect-secrets scan --baseline .secrets.baseline",
-    "secrets:audit": "detect-secrets audit .secrets.baseline"
+    "secrets:audit": "detect-secrets audit .secrets.baseline",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +37,8 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.6.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
@@ -45,5 +48,15 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.13.1",
     "zod": "^3.25.67"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "detect-secrets-hook --baseline .secrets.baseline",
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
