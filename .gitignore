@@ -38,3 +38,6 @@ wrangler.toml.local
 *.tmp
 *.temp
 .cache/
+
+# Data files
+data/*.json
